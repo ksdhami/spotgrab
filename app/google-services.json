@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "610952826626",
+    "firebase_url": "https://spotgrab-4f2cf.firebaseio.com",
+    "project_id": "spotgrab-4f2cf",
+    "storage_bucket": "spotgrab-4f2cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610952826626:android:8a77c556b25567ac",
+        "android_client_info": {
+          "package_name": "com.spotgrab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610952826626-gqr9083tb5583acjjv222c3b1mbk0171.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spotgrab",
+            "certificate_hash": "b6af70f3d2c29daf2159ceaa91eff5ef95c506c1"
+          }
+        },
+        {
+          "client_id": "610952826626-ril0r80jc338g7984ltjbcladsl2hjmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdAA2I-4dW3TS8-XpZcI8xnbGjiJ0ALdM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610952826626-ril0r80jc338g7984ltjbcladsl2hjmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
