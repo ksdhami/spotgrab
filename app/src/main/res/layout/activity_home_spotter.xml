@@ -19,7 +19,7 @@
 
     <FrameLayout
         android:layout_width="320dp"
-        android:layout_height="290dp"
+        android:layout_height="273dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -33,7 +33,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="310dp"
-            android:layout_height="280dp"
+            android:layout_height="270dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="32dp"
@@ -46,24 +46,66 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/firstLastNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="103dp"
-                android:layout_marginTop="160dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="115dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="spotter"
-                android:textSize="18sp"
+                android:text=" "
+                android:textSize="36sp"
                 android:textStyle="italic" />
 
-            <ToggleButton
-                android:id="@+id/toggleButton"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="230dp"
+                android:fontFamily="@font/roboto"
+                android:text="Jobs" />
+
+            <TextView
+                android:id="@+id/numJobsText"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="200dp"
+                android:fontFamily="@font/roboto"
+                android:text=""
+                android:textSize="20sp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@android:style/Widget.Material.Light.RatingBar.Indicator"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginVertical="200dp"
+                android:isIndicator="true"/>
+
+            <android.support.v7.widget.SwitchCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:text="ToggleButton" />
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp"
+                android:checked="true" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="BEACON"
+                android:layout_gravity="end"
+                android:layout_marginVertical="50dp"
+                android:layout_marginHorizontal="20dp"/>
+
         </android.support.v7.widget.CardView>
     </FrameLayout>
+
+
 
 
     <FrameLayout
@@ -81,7 +123,7 @@
         app:layout_constraintVertical_bias="0.19999999">
 
         <ImageView
-            android:id="@+id/imgView"
+            android:id="@+id/profileImage"
             android:layout_width="184dp"
             android:layout_height="184dp"
             android:layout_marginStart="8dp"
@@ -97,20 +139,20 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:id="@+id/postSchedButton"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/post_shift_button"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/set_availability_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.986" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:layout_width="395dp"
@@ -122,10 +164,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.933">
+        app:layout_constraintVertical_bias="0.909">
 
         <Space
             android:layout_width="wrap_content"
@@ -133,7 +175,7 @@
             android:layout_weight="1.5" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/notificationSpotButton"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -151,7 +193,7 @@
             android:layout_weight="1.5" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/activeSpotButton"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -169,7 +211,7 @@
             android:layout_weight="1.5" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/offersSpotButton"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -185,5 +227,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.5" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/menuSpotButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/menu_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
 
 </android.support.constraint.ConstraintLayout>

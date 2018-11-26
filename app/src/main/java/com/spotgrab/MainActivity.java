@@ -1,34 +1,48 @@
 package com.spotgrab;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.view.View;
-import android.util.Log;
-import android.support.annotation.NonNull;
-import android.content.Intent;
 import android.widget.Toast;
-import android.content.Context;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.spotgrab.client.UserClient;
+import com.spotgrab.models.User;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    //public static final User user = new User();
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseFirestore mFirestore;
+    private DocumentReference userRef;
+    private FirebaseUser user;
 
     private Context mContext;
     private ProgressBar mProgressBar;
     private EditText mEmail, mPassword;
+
+    private String email, password, userID;
 
 
     @Override
@@ -41,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar = findViewById(R.id.progressBar);
         mContext = MainActivity.this;
 
-        Log.d(TAG, "onCreate: started.");
+        Log.d(TAG, "\nonCreate: started.\n");
 
         mProgressBar.setVisibility(View.GONE);
 
@@ -49,8 +63,9 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
+
     private boolean isStringNull(String string){
-        Log.d(TAG, "isStringNull: checking string if null.");
+        Log.d(TAG, "\nisStringNull: checking string if null.\n");
 
         return string.equals("");
     }
@@ -63,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: attempting to log in.");
+                Log.d(TAG, "\nonClick: attempting to log in.\n");
 
-                String email = mEmail.getText().toString();
-                String password = mPassword.getText().toString();
+                 email = mEmail.getText().toString();
+                 password = mPassword.getText().toString();
 
                 if(isStringNull(email) && isStringNull(password)){
                     Toast.makeText(mContext, "Enter both your email and password", Toast.LENGTH_SHORT).show();
@@ -76,24 +91,48 @@ public class MainActivity extends AppCompatActivity {
                     mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            Log.d(TAG, "\nsignInWithEmail:onComplete:" + task.isSuccessful() + "\n");
 
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
-                                Log.w(TAG, "signInWithEmail:failed", task.getException());
+                                Log.w(TAG, "\nsignInWithEmail:failed\n", task.getException());
 
                                 Toast.makeText(mContext, "Failed to Authenticate", Toast.LENGTH_SHORT).show();
                                 mProgressBar.setVisibility(View.GONE);
                             }
                             else{
-                                // ADD IF ELSE FOR TYPE OF USER
+                                userID = mAuth.getCurrentUser().getUid();
+                                mFirestore = FirebaseFirestore.getInstance();
+                                FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                                        .setTimestampsInSnapshotsEnabled(true)
+                                        .build();
+                                mFirestore.setFirestoreSettings(settings);
 
-                                Log.d(TAG, "onComplete: success. email is verified.");
-                                Intent intent = new Intent(MainActivity.this, HomeEmployerActivity.class);
-                                startActivity(intent);
+                                DocumentReference userRef = mFirestore.collection("user").document(userID);
+
+                                userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if(task.isSuccessful()) {
+                                            Log.d(TAG, "onComplete: successfully set the user client." + user.getUid().toString());
+                                            User userLoggedIn = task.getResult().toObject(User.class);
+                                            String userAccountType = userLoggedIn.getAccount();
+                                            if (userAccountType.equals("Spotter")) {
+                                                Intent intent = new Intent(MainActivity.this, HomeSpotterActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Intent intent = new Intent(MainActivity.this, HomeEmployerActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        }
+                                    }
+                                });
+
+
                             }
                         }
                     });
@@ -105,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: navigating to register screen");
+                Log.d(TAG, "\nonClick: navigating to register screen\n");
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
@@ -119,9 +158,35 @@ public class MainActivity extends AppCompatActivity {
 
             // ADD IF ELSE FOR TYPE OF USER
 
-            Intent intent = new Intent(MainActivity.this, HomeEmployerActivity.class);
-            startActivity(intent);
-            finish();
+            userID = mAuth.getCurrentUser().getUid();
+            mFirestore = FirebaseFirestore.getInstance();
+            FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                    .setTimestampsInSnapshotsEnabled(true)
+                    .build();
+            mFirestore.setFirestoreSettings(settings);
+
+            DocumentReference userRef = mFirestore.collection("user").document(userID);
+
+            userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful()) {
+                        Log.d(TAG, "onComplete: successfully set the user client." + user.getUid().toString());
+                        User userLoggedIn = task.getResult().toObject(User.class);
+                        String userAccountType = userLoggedIn.getAccount();
+                        if (userAccountType.equals("Spotter")) {
+                            Intent intent = new Intent(MainActivity.this, HomeSpotterActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Intent intent = new Intent(MainActivity.this, HomeEmployerActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                }
+            });
+
         }
     }
 
@@ -129,21 +194,38 @@ public class MainActivity extends AppCompatActivity {
      * Setup the firebase auth object
      */
     private void setupFirebaseAuth(){
-        Log.d(TAG, "setupFirebaseAuth: setting up firebase auth.");
+        Log.d(TAG, "\nsetupFirebaseAuth: setting up firebase auth.\n");
 
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                user = firebaseAuth.getCurrentUser();
 
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.d(TAG, "\nonAuthStateChanged:signed_in:" + user.getUid() + "\n");
+                    mFirestore = FirebaseFirestore.getInstance();
+                    FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                            .setTimestampsInSnapshotsEnabled(true)
+                            .build();
+                    mFirestore.setFirestoreSettings(settings);
+
+                    userRef = mFirestore.collection("user").document(user.getUid());
+
+                    userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                Log.d(TAG, "onComplete: successfully set the user client.");
+                                User userLoggedIn = task.getResult().toObject(User.class);
+                            }
+                        }
+                    });
                 } else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    Log.d(TAG, "\nonAuthStateChanged:signed_out\n");
                 }
                 // ...
             }

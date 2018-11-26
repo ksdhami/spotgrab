@@ -13,13 +13,14 @@
         android:layout_marginEnd="8dp"
         android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/appbar" />
 
     <FrameLayout
         android:layout_width="320dp"
-        android:layout_height="290dp"
+        android:layout_height="273dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -33,7 +34,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="310dp"
-            android:layout_height="280dp"
+            android:layout_height="270dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="32dp"
@@ -46,15 +47,41 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/firstLastNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="103dp"
-                android:layout_marginTop="160dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="115dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="employer"
-                android:textSize="18sp"
+                android:text=" "
+                android:textSize="36sp"
                 android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="230dp"
+                android:text="Jobs" />
+
+            <TextView
+                android:id="@+id/numJobsText"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="200dp"
+                android:textSize="20sp"
+                android:text="" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@android:style/Widget.Material.Light.RatingBar.Indicator"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginVertical="200dp"
+                android:isIndicator="true"/>
         </android.support.v7.widget.CardView>
     </FrameLayout>
 
@@ -74,7 +101,7 @@
         app:layout_constraintVertical_bias="0.19999999">
 
         <ImageView
-            android:id="@+id/imgView"
+            android:id="@+id/profileImage"
             android:layout_width="184dp"
             android:layout_height="184dp"
             android:layout_marginStart="8dp"
@@ -90,14 +117,15 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/postShiftButton"
         android:layout_width="100dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="14dp"
         android:background="@drawable/post_shift_button"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.973"
@@ -115,36 +143,20 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.933">
+        app:layout_constraintVertical_bias="0.909">
+
+
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5" />
+            android:layout_weight="2.8" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/whiteBackgroundColor"
-            android:elevation="10dp"
-            android:fontFamily="@font/roboto"
-            android:text="notification"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            android:translationZ="10dp" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5" />
-
-        <Button
-            android:id="@+id/button4"
+            android:id="@+id/activeEmpButton"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -159,10 +171,10 @@
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5" />
+            android:layout_weight="2.8" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/pendingEmpButton"
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_weight="1"
@@ -173,10 +185,27 @@
             android:textAllCaps="false"
             android:textSize="14sp"
             android:translationZ="10dp" />
+
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5" />
+ />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/menuEmpButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/menu_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
 
 </android.support.constraint.ConstraintLayout>

@@ -21,6 +21,7 @@
         android:layout_width="363dp"
         android:layout_height="428dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
         app:cardBackgroundColor="@color/whiteBackgroundColor"
@@ -29,7 +30,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createAccountLogo">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -56,7 +58,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/account_details"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="36sp"
+                    android:textSize="33sp"
                     android:textStyle="italic" />
 
                 <Space
@@ -142,7 +144,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/personal_details"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="36sp"
+                    android:textSize="33sp"
                     android:textStyle="italic" />
 
                 <Space
@@ -194,7 +196,7 @@
                     android:textAllCaps="true" />
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/etPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -211,7 +213,7 @@
                     android:textAllCaps="true" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/etAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -228,28 +230,85 @@
                     android:textAllCaps="true" />
 
                 <EditText
-                    android:id="@+id/editText6"
+                    android:id="@+id/etFranchise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName" />
 
+
+
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="16dp" />
+
+
+                <TextView
+                    android:id="@+id/addProfileImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="add a profile image"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="33sp"
+                    android:textStyle="italic" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp" />
+
+
+                <FrameLayout
+                    android:layout_width="235dp"
+                    android:layout_height="235dp"
+                    android:layout_marginStart="-8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_gravity="center">
+
+
+
+                    <ImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorPrimary"
+                        android:elevation="14dp"
+                        android:layout_gravity="center"/>
+
+                    <Button
+                        android:id="@+id/addPicButton"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/add_small"
+                        android:layout_gravity="bottom|end"/>
+
+
+                </FrameLayout>
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp" />
+
 
                 <Button
                     android:id="@+id/nextButton"
                     android:layout_width="61dp"
                     android:layout_height="21dp"
                     android:layout_marginStart="220dp"
-                    android:background="@drawable/next_button"
+                    android:background="@drawable/done_button"
                     android:textAlignment="center" />
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="16dp" />
+                    android:layout_height="24dp" />
 
             </LinearLayout>
         </ScrollView>

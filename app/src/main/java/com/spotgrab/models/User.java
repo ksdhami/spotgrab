@@ -1,8 +1,10 @@
 package com.spotgrab.models;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    private String user_id;
+public class User implements Parcelable {
+
     private String account;
     private String email;
     private String password;
@@ -12,10 +14,10 @@ public class User {
     private String address;
     private String franchise;
     private String profile_image;
-    private String description;
+    private Long rating;
+    private Integer numJobs;
 
-    public User(String user_id, String account, String email, String password, String fName, String lName, String phone, String address, String franchise, String profile_image, String description) {
-        this.user_id = user_id;
+    public User(String account, String email, String password, String fName, String lName, String phone, String address, String franchise, String profile_image, long rating, int numJobs) {
         this.account = account;
         this.email = email;
         this.password = password;
@@ -25,21 +27,40 @@ public class User {
         this.address = address;
         this.franchise = franchise;
         this.profile_image = profile_image;
-        this.description = description;
+        this.rating = rating;
+        this.numJobs = numJobs;
     }
 
     public User() {
 
     }
 
-
-    public String getUser_id() {
-        return user_id;
+    protected User(Parcel in) {
+        email = in.readString();
+        password = in.readString();
+        account = in.readString();
+        fName = in.readString();
+        lName = in.readString();
+        phone = in.readString();
+        address = in.readString();
+        franchise = in.readString();
+        profile_image = in.readString();
+        rating = in.readLong();
+        numJobs = in.readInt();
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
 
     public String getAccount() {
         return account;
@@ -113,18 +134,23 @@ public class User {
         this.profile_image = profile_image;
     }
 
-    public String getDescription() {
-        return description;
+    public Long getRating() { return rating; }
+
+    public void setRating(Long rating) {
+        this.rating = rating;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public Integer getNumJobs() {
+        return numJobs;
+    }
+
+    public void setNumJobs(Integer numJobs) {
+        this.numJobs = numJobs;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "user_id='" + user_id + '\'' +
                 ", account='" + account + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
@@ -134,8 +160,28 @@ public class User {
                 ", address='" + address + '\'' +
                 ", franchise='" + franchise + '\'' +
                 ", profile_image='" + profile_image + '\'' +
-                ", description='" + description + '\'' +
+                ", rating='" + rating + '\'' +
+                ", numJobs='" + numJobs + '\'' +
                 '}';
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(email);
+        dest.writeString(password);
+        dest.writeString(account);
+        dest.writeString(fName);
+        dest.writeString(lName);
+        dest.writeString(phone);
+        dest.writeString(address);
+        dest.writeString(franchise);
+        dest.writeString(profile_image);
+        dest.writeLong(rating);
+        dest.writeInt(numJobs);
+    }
 }
