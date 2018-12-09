@@ -2,12 +2,14 @@ package com.spotgrab;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.view.View;
 import android.support.annotation.NonNull;
 import android.content.Intent;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
 
@@ -114,6 +117,17 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter<String> accountAdapter = new ArrayAdapter<>(RegisterActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Account));
         accountAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAccount.setAdapter(accountAdapter);
+//        spinnerAccount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
 
 
@@ -189,30 +203,30 @@ public class RegisterActivity extends AppCompatActivity {
     private void uploadImage(String uid) {
         Log.d(TAG, "uploadedImage");
         if(filePath != null) {
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading ...");
-            progressDialog.show();
+            //final ProgressDialog progressDialog = new ProgressDialog(this);
+            //progressDialog.setTitle("Uploading ...");
+            //progressDialog.show();
 
             final StorageReference imageRef = mStorageRef.child("images/" + uid);
 
             imageRef.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    progressDialog.dismiss();
+                    //progressDialog.dismiss();
                     Toast.makeText(mContext, "Uploaded", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "image uploaded");
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
+                    //progressDialog.dismiss();
                     Toast.makeText(mContext, "Failure to Upload", Toast.LENGTH_SHORT).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
-                    progressDialog.setMessage("Uploaded " + (int)progress + "%");
+                    //double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
+                    //progressDialog.setMessage("Uploaded " + (int)progress + "%");
                 }
             });
 
@@ -341,10 +355,24 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     if(task.isSuccessful()){
-                                        Toast.makeText(mContext, "Welcome to SpotGrab.", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
+                                        if(user.getAccount().equals("Employer")) {
+                                            // Toast.makeText(mContext, "employer account.", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(RegisterActivity.this, PlanActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            // Toast.makeText(mContext, "spotter account.", Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(mContext, "Welcome to SpotGrab.", Toast.LENGTH_SHORT).show();
+                                            Toast toast = Toast.makeText(mContext, "Welcome to SpotGrab", Toast.LENGTH_SHORT);
+                                            View view = toast.getView();
+                                            view.setBackgroundColor(Color.parseColor("#36454f"));
+                                            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                                            toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+                                            toast.show();
+                                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
                                     }else{
                                         //View parentLayout = findViewById(android.R.id.content);
                                         Toast.makeText(mContext, "Something went wrong.", Toast.LENGTH_SHORT).show();

@@ -19,6 +19,13 @@
         <item>Employer</item>
         <item>Spotter</item>
     </string-array>
+
+    <string-array name="Plan">
+        <item> </item>
+        <item>$40 a month - Franchise Access</item>
+        <item>$50 a month - Same Industry Access</item>
+        <item>$60 a month - All Industry Access</item>
+    </string-array>
     <string name="title_activity_nav">NavActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -26,5 +33,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="edit_profile">edit profile</string>
 
 </resources>

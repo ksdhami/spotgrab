@@ -310,6 +310,106 @@
                     android:layout_width="match_parent"
                     android:layout_height="24dp" />
 
+                <!--
+                <TextView
+                    android:id="@+id/addCreditCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="select a plan"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="33sp"
+                    android:textStyle="italic"
+                    android:gravity="center"/>
+
+                <Spinner
+                    android:id="@+id/planTypeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Credit Card Number"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etCreditCardNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Security Code"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etSecurityCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Name On Card"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etNameOnCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Expiration Month"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etExpirationMonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Expiration Year"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etExpirationYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+
+                    -->
+
+
             </LinearLayout>
         </ScrollView>
 

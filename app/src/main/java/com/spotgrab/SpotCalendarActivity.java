@@ -3,6 +3,7 @@ package com.spotgrab;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -119,7 +120,7 @@ public class SpotCalendarActivity extends AppCompatActivity {
                 textChange = findViewById(R.id.spotEndCalET);
                 textChange.setText("");
                 //               }
-                Toast.makeText(getApplicationContext(), "Selected Date:\n" + "Day = " + dayOfMonth + "\n" + "Month = " + month + "\n" + "Year = " + year, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Selected Date:\n" + "Day = " + dayOfMonth + "\n" + "Month = " + month + "\n" + "Year = " + year, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -185,7 +186,7 @@ public class SpotCalendarActivity extends AppCompatActivity {
                 sEndTime = endTime.getText().toString();
 
                 if (checkInputs(sStartTime, sEndTime, sDate)) {
-                    Toast.makeText(getApplicationContext(), "Start Time: " + sStartTime + "\nEnd Time: " + sEndTime, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Start Time: " + sStartTime + "\nEnd Time: " + sEndTime, Toast.LENGTH_SHORT).show();
 
                     addNewSched(sStartTime,sEndTime, sDate);
                 }
@@ -201,7 +202,13 @@ public class SpotCalendarActivity extends AppCompatActivity {
         Log.d(TAG, "checkInputs: checking inputs for null values.");
 
         if(sStartTime.equals("") || sEndTime.equals("") || sDate.equals("")){
-            Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(mContext, "All fields must be filled out", Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundColor(Color.parseColor("#36454f"));
+            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+            toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+            toast.show();
             return false;
         }
         return true;
@@ -209,24 +216,37 @@ public class SpotCalendarActivity extends AppCompatActivity {
 
     private void addNewSched(String sStartTime, String sEndTime, String sDate) {
 
-        Schedule sched = new Schedule(sStartTime, sEndTime, sDate);
+        Schedule sched = new Schedule(sStartTime, sEndTime, sDate, null, null, null, null, null, null, "no", null, null, null);
 
         mFirestore = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder().setTimestampsInSnapshotsEnabled(true).build();
         mFirestore.setFirestoreSettings(settings);
 
-        DocumentReference newSchedRef = mFirestore.collection("user").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("schedule").document("sched: "+UUID.randomUUID());
+        DocumentReference newSchedRef = mFirestore.collection("user").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("schedule").document(UUID.randomUUID().toString());
 
         newSchedRef.set(sched).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()) {
-                    Toast.makeText(mContext, "Schedule Added", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mContext, "Schedule Added", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(mContext, "Schedule Added", Toast.LENGTH_SHORT);
+                    View view = toast.getView();
+                    view.setBackgroundColor(Color.parseColor("#36454f"));
+                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+                    toast.show();
+
                     textChange.getText().clear();
                     startTime.getText().clear();
                     endTime.getText().clear();
                 } else {
-                    Toast.makeText(mContext, "Failed to Add Schedule", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mContext, "Failed to Add Schedule", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(mContext, "Failed to Add Schedule", Toast.LENGTH_SHORT);
+                    View view = toast.getView();
+                    view.setBackgroundColor(Color.parseColor("#36454f"));
+                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+                    toast.show();
                 }
             }
         });

@@ -3,6 +3,7 @@ package com.spotgrab;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -139,7 +140,8 @@ public class EmpCalendarActivity extends AppCompatActivity {
                     textChange = findViewById(R.id.empDesCalET);
                     textChange.setText("");
  //               }
-                Toast.makeText(getApplicationContext(), "Selected Date:\n" + "Day = " + dayOfMonth + "\n" + "Month = " + month + "\n" + "Year = " + year, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Selected Date:\n" + "Day = " + dayOfMonth + "\n" + "Month = " + month + "\n" + "Year = " + year, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Selected Date:\n" + "Day = " + dayOfMonth + "\n" + "Month = " + month + "\n" + "Year = " + year);
             }
         });
 
@@ -210,7 +212,8 @@ public class EmpCalendarActivity extends AppCompatActivity {
 
                 if (checkInputs(sJobTitle, sStartTime, sEndTime, sDate, sPay, sLocation, sDescription)) {
                     Log.v("job", jobTitle.getText().toString());
-                    Toast.makeText(getApplicationContext(), "Job Title: " + sJobTitle + "\nStart Time: " + sStartTime + "\nEnd Time: " + sEndTime + "\nPay: " + sPay + "\nLocation: " + sLocation + "\nDescription: " + sDescription, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Job Title: " + sJobTitle + "\nStart Time: " + sStartTime + "\nEnd Time: " + sEndTime + "\nPay: " + sPay + "\nLocation: " + sLocation + "\nDescription: " + sDescription, Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "Job Title: " + sJobTitle + "\nStart Time: " + sStartTime + "\nEnd Time: " + sEndTime + "\nPay: " + sPay + "\nLocation: " + sLocation + "\nDescription: " + sDescription);
 
                     addNewShift(sJobTitle, sStartTime, sEndTime, sDate, sPay, sLocation, sDescription);
                 }
@@ -229,7 +232,13 @@ public class EmpCalendarActivity extends AppCompatActivity {
         Log.d(TAG, "checkInputs: checking inputs for null values.");
 
         if(sJobTitle.equals("") || sStartTime.equals("") || sEndTime.equals("") || sDate.equals("") || sPay.equals("") || sLocation.equals("") || sDescription.equals("")){
-            Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(mContext, "All fields must be filled out", Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundColor(Color.parseColor("#36454f"));
+            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+            toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+            toast.show();
             return false;
         }
         return true;
@@ -237,19 +246,24 @@ public class EmpCalendarActivity extends AppCompatActivity {
 
     private void addNewShift(String sJobTitle, String sStartTime, String sEndTime, String sDate, String sPay, String sLocation, String sDescription) {
 
-        Shift shift = new Shift(sJobTitle, sStartTime, sEndTime, sDate, sPay, sLocation, sDescription, "no", "no", null);
+        Shift shift = new Shift(sJobTitle, sStartTime, sEndTime, sDate, sPay, sLocation, sDescription, "no", "no", null, null, null);
 
         mFirestore = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder().setTimestampsInSnapshotsEnabled(true).build();
         mFirestore.setFirestoreSettings(settings);
 
-        DocumentReference newShiftRef = mFirestore.collection("user").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("shift").document("shift: "+UUID.randomUUID());
+        DocumentReference newShiftRef = mFirestore.collection("user").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("shift").document(UUID.randomUUID().toString());
 
         newShiftRef.set(shift).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()) {
-                    Toast.makeText(mContext, "Shift Added", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(mContext, "Shift Added", Toast.LENGTH_SHORT);
+                    View view = toast.getView();
+                    view.setBackgroundColor(Color.parseColor("#36454f"));
+                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+                    toast.show();
                     textChange.getText().clear();
                     startTime.getText().clear();
                     endTime.getText().clear();
@@ -258,7 +272,12 @@ public class EmpCalendarActivity extends AppCompatActivity {
                     location.getText().clear();
                     description.getText().clear();
                 } else {
-                    Toast.makeText(mContext, "Failed to Add Shift", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(mContext, "Failed to Add Shift", Toast.LENGTH_SHORT);
+                    View view = toast.getView();
+                    view.setBackgroundColor(Color.parseColor("#36454f"));
+                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+                    toast.show();
                 }
             }
         });

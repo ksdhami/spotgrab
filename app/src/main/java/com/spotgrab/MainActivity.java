@@ -2,6 +2,7 @@ package com.spotgrab;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -84,7 +86,13 @@ public class MainActivity extends AppCompatActivity {
                  password = mPassword.getText().toString();
 
                 if(isStringNull(email) && isStringNull(password)){
-                    Toast.makeText(mContext, "Enter both your email and password", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mContext, "Enter both your email and password", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(mContext, "Enter both your Email and Password", Toast.LENGTH_SHORT);
+                    View view = toast.getView();
+                    view.setBackgroundColor(Color.parseColor("#36454f"));
+                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+                    toast.show();
                 } else{
                     mProgressBar.setVisibility(View.VISIBLE);
 
@@ -99,7 +107,13 @@ public class MainActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Log.w(TAG, "\nsignInWithEmail:failed\n", task.getException());
 
-                                Toast.makeText(mContext, "Failed to Authenticate", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(mContext, "Failed to Authenticate", Toast.LENGTH_SHORT).show();
+                                Toast toast = Toast.makeText(mContext, "Failed to Sign In", Toast.LENGTH_SHORT);
+                                View view = toast.getView();
+                                view.setBackgroundColor(Color.parseColor("#36454f"));
+                                TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                                toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+                                toast.show();
                                 mProgressBar.setVisibility(View.GONE);
                             }
                             else{

@@ -30,10 +30,31 @@
         <activity android:name=".UploadPicActivity" />
         <activity android:name=".HomeEmployerActivity" />
         <activity android:name=".HomeSpotterActivity" />
-        <activity android:name=".EmpNavDrawerActivity" />
-        <activity android:name=".SpotNavDrawerActivity" />
+        <activity
+            android:name=".EmpNavDrawerActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".SpotNavDrawerActivity"
+            android:noHistory="true" />
         <activity android:name=".EmpCalendarActivity" />
-        <activity android:name=".SpotCalendarActivity"></activity>
+        <activity android:name=".SpotCalendarActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".EmpRatingActivity" />
+        <activity android:name=".DetailedLookActivity" />
+        <activity android:name=".CandidateSelectorActivity"
+            android:noHistory="true"/>
+        <activity android:name=".EmpActiveActivity"
+            android:noHistory="true" />
+        <activity android:name=".EmpPendingActivity"
+            android:noHistory="true" />
+        <activity android:name=".PlanActivity" />
+        <activity android:name=".SpotActiveActivity"
+            android:noHistory="true"/>
+        <activity android:name=".SpotOffersActivity"
+            android:noHistory="true"/>
+        <activity android:name=".SpotSchedActivity"
+            android:noHistory="true"/>
+        <activity android:name=".SpotRatingActivity"></activity>
     </application>
 
 </manifest>

@@ -24,6 +24,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.spotgrab.client.UserClient;
@@ -67,7 +69,26 @@ public class HomeEmployerActivity extends AppCompatActivity {
         mContext = HomeEmployerActivity.this;
 
         activeButton = findViewById(R.id.activeEmpButton);
+        activeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(getActivity(), "TESTING BUTTON CLICK 1",Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "\nonClick: activeButton\n");
+                Intent intent = new Intent(HomeEmployerActivity.this, EmpActiveActivity.class);
+                startActivity(intent);
+            }
+        });
+
         pendingButton = findViewById(R.id.pendingEmpButton);
+        pendingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(getActivity(), "TESTING BUTTON CLICK 1",Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "\nonClick: pendingButton\n");
+                Intent intent = new Intent(HomeEmployerActivity.this, EmpPendingActivity.class);
+                startActivity(intent);
+            }
+        });
 
         postShiftButton = findViewById(R.id.postShiftButton);
         postShiftButton.setOnClickListener(new View.OnClickListener() {
@@ -125,12 +146,23 @@ public class HomeEmployerActivity extends AppCompatActivity {
                                 if(loggedInUser.getRating() == null) {
                                     userRating.setRating(0);
                                 } else {
-                                    userRating.setRating(loggedInUser.getRating().intValue());
+                                    userRating.setRating(loggedInUser.getRating().floatValue());
                                 }
                                 //((UserClient)(getApplicationContext())).setUser(user);
                             }
                         }
                     });
+
+//                    mFirestore.collection("user").document(mUser.getUid().toString()).collection("shift").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                            if (task.isSuccessful()) {
+//                                for (QueryDocumentSnapshot document : task.getResult()) {
+//
+//                                }
+//                            }
+//                        }
+//                    });
 
                     mStorage = FirebaseStorage.getInstance().getReference().child("images/").child(mUser.getUid());
                     GlideApp.with(mContext).load(mStorage).into(profileImage);

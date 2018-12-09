@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlanActivity">
+
+    <ImageView
+        android:id="@+id/createAccountLogo"
+        android:layout_width="444dp"
+        android:layout_height="163dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pick_plan_bar" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="363dp"
+        android:layout_height="428dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        app:cardBackgroundColor="@color/whiteBackgroundColor"
+        app:cardElevation="20dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createAccountLogo">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarStyle="insideOverlay">
+
+
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <TextView
+                    android:id="@+id/accountDetailsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="select a plan"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="33sp"
+                    android:textStyle="italic" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp" />
+
+                <TextView
+                    android:id="@+id/accountTypeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Plan Type"
+                    android:textAllCaps="true"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/accountTypeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Credit Card Number"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etCreditCardNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Security Code"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etSecurityCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Name On Card"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etNameOnCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Expiration Month"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etExpirationMonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Expiration Year"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etExpirationYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+
+
+                <Button
+                    android:id="@+id/nextButton"
+                    android:layout_width="61dp"
+                    android:layout_height="21dp"
+                    android:layout_marginStart="220dp"
+                    android:background="@drawable/done_button"
+                    android:textAlignment="center" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp" />
+
+                <!--
+                <TextView
+                    android:id="@+id/addCreditCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="select a plan"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="33sp"
+                    android:textStyle="italic"
+                    android:gravity="center"/>
+
+                <Spinner
+                    android:id="@+id/planTypeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp" />
+
+
+
+                    -->
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -35,7 +35,7 @@
         android:textColor="@color/whiteBackgroundColor"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toEndOf="@+id/spotNavCalendarBt"
         app:layout_constraintTop_toBottomOf="@+id/spotNavHome" />
 
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="AVAILABILITY"
@@ -83,7 +83,7 @@
         android:textColor="@color/whiteBackgroundColor"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintHorizontal_bias="0.177"
         app:layout_constraintStart_toEndOf="@+id/spotNavOffersBt"
         app:layout_constraintTop_toBottomOf="@+id/spotNavActiveJobs" />
 
@@ -92,14 +92,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="SETTINGS"
+        android:text="EDIT PROFILE"
         android:textColor="@color/whiteBackgroundColor"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toEndOf="@+id/spotNavSettingsBt"
         app:layout_constraintTop_toBottomOf="@+id/spotNavOffers" />
 
@@ -114,8 +114,17 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="251dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/colorPrimaryDark">
 
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="45dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/spotgrab_logo" />
         </android.support.v7.widget.CardView>
 
         <Button

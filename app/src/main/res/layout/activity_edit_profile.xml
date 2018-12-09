@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfileActivity">
+
+    <ImageView
+        android:id="@+id/createAccountLogo"
+        android:layout_width="444dp"
+        android:layout_height="163dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit_profile_image" />
+
+    <FrameLayout
+        android:layout_width="356dp"
+        android:layout_height="422dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="333dp"
+            android:layout_height="391dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            app:cardBackgroundColor="@color/whiteBackgroundColor"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createAccountLogo">
+
+
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:orientation="vertical">
+
+                <!--
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+                    -->
+
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+
+                <TextView
+                    android:id="@+id/fNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/first_name"
+                    android:textAllCaps="true"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etFName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/last_name"
+                    android:textAllCaps="true"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etLName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/phone"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:textColorHint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/address"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:importantForAutofill="no"
+                    android:inputType="textPostalAddress"
+                    android:textColorHint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/franchise"
+                    android:textAllCaps="true" />
+
+                <EditText
+                    android:id="@+id/etFranchise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/colorPrimary" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+    </FrameLayout>
+
+    <!--
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126">
+
+
+        <Button
+            android:id="@+id/addPicButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom|end"
+            android:background="@drawable/add_small"
+            android:elevation="14dp"/>
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorAccent"
+            android:elevation="14dp" />
+
+
+    </FrameLayout>
+
+    -->
+
+    <LinearLayout
+        android:layout_width="326dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="61dp"
+            android:layout_height="21dp"
+            android:layout_gravity="start"
+            android:background="@drawable/cancel_button" />
+
+        <Space
+            android:layout_width="200dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="61dp"
+            android:layout_height="21dp"
+            android:layout_gravity="end"
+            android:background="@drawable/done_button"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/menuEmpButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/menu_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+</android.support.constraint.ConstraintLayout>

@@ -15,8 +15,10 @@ public class Shift implements Parcelable {
     private String shift_Filled;
     private String shift_Offer_Sent;
     private String shift_Spotter_Uid;
+    private String shift_Start_Set;
+    private String shift_End_Set;
 
-    public Shift(String shift_JobTitle, String shift_StartTime, String shift_EndTime, String shift_Date, String shift_Pay, String shift_Location, String shift_Description, String shift_Filled, String shift_Offer_Sent, String shift_Spotter_Uid) {
+    public Shift(String shift_JobTitle, String shift_StartTime, String shift_EndTime, String shift_Date, String shift_Pay, String shift_Location, String shift_Description, String shift_Filled, String shift_Offer_Sent, String shift_Spotter_Uid, String shift_Start_Set, String shift_End_Set) {
         this.shift_JobTitle = shift_JobTitle;
         this.shift_StartTime = shift_StartTime;
         this.shift_EndTime = shift_EndTime;
@@ -44,6 +46,8 @@ public class Shift implements Parcelable {
         shift_Filled = in.readString();
         shift_Offer_Sent = in.readString();
         shift_Spotter_Uid = in.readString();
+        shift_Start_Set = in.readString();
+        shift_End_Set = in.readString();
     }
 
     public static final Creator<Shift> CREATOR = new Creator<Shift>() {
@@ -138,6 +142,22 @@ public class Shift implements Parcelable {
         this.shift_Spotter_Uid = shift_Spotter_Uid;
     }
 
+    public void setShift_Start_Set(String shift_Start_Set) {
+        this.shift_Start_Set = shift_Start_Set;
+    }
+
+    public String getShift_Start_Set() {
+        return shift_Start_Set;
+    }
+
+    public void setShift_End_Set(String shift_End_Set) {
+        this.shift_End_Set = shift_End_Set;
+    }
+
+    public String getShift_End_Set() {
+        return shift_End_Set;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -155,6 +175,8 @@ public class Shift implements Parcelable {
         dest.writeString(shift_Filled);
         dest.writeString(shift_Offer_Sent);
         dest.writeString(shift_Spotter_Uid);
+        dest.writeString(shift_Start_Set);
+        dest.writeString(shift_End_Set);
     }
 
 }

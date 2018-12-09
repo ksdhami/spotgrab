@@ -14,10 +14,10 @@ public class User implements Parcelable {
     private String address;
     private String franchise;
     private String profile_image;
-    private Long rating;
+    private Float rating;
     private Integer numJobs;
 
-    public User(String account, String email, String password, String fName, String lName, String phone, String address, String franchise, String profile_image, long rating, int numJobs) {
+    public User(String account, String email, String password, String fName, String lName, String phone, String address, String franchise, String profile_image, float rating, int numJobs) {
         this.account = account;
         this.email = email;
         this.password = password;
@@ -45,7 +45,7 @@ public class User implements Parcelable {
         address = in.readString();
         franchise = in.readString();
         profile_image = in.readString();
-        rating = in.readLong();
+        rating = in.readFloat();
         numJobs = in.readInt();
     }
 
@@ -134,9 +134,9 @@ public class User implements Parcelable {
         this.profile_image = profile_image;
     }
 
-    public Long getRating() { return rating; }
+    public Float getRating() { return rating; }
 
-    public void setRating(Long rating) {
+    public void setRating(Float rating) {
         this.rating = rating;
     }
 
@@ -181,7 +181,7 @@ public class User implements Parcelable {
         dest.writeString(address);
         dest.writeString(franchise);
         dest.writeString(profile_image);
-        dest.writeLong(rating);
+        dest.writeFloat(rating);
         dest.writeInt(numJobs);
     }
 }

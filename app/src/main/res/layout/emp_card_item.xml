@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:elevation="34dp"
+    android:translationZ="4dp"
+    android:background="@drawable/border"
+    android:layout_margin="@dimen/default_gap"
+    android:padding="12dp">
+
+    <RelativeLayout
+        android:layout_width="380dp"
+        android:layout_height="108dp"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="191dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="left|center_vertical"
+            android:text="JobTitle"
+            android:textAllCaps="true"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:ignore="InvalidId" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="211dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Date: "
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="InvalidId" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="139dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="210dp"
+            android:layout_marginTop="67dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Start Time"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="InvalidId" />
+        <!--
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="189dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="181dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="End Time"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="InvalidId" />
+        -->
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="158dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="195dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="left|center_vertical"
+            android:text="Job Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="InvalidId" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="6dp"
+            android:text=" "
+            android:textColor="@color/colorPrimaryDark"/>
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

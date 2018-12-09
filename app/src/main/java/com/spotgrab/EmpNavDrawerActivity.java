@@ -2,6 +2,7 @@ package com.spotgrab;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,10 +38,55 @@ public class EmpNavDrawerActivity extends AppCompatActivity {
 
         // ICON BUTTON
         homeBt = findViewById(R.id.empNavHomeBt);
+        homeBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\nhome button clicked.\n");
+                Intent intent = new Intent(mContext, HomeEmployerActivity.class);
+                startActivity(intent);
+            }
+        });
+
         calendarBt = findViewById(R.id.empNavCalendarBt);
+        calendarBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\ncalendar button clicked.\n");
+                Intent intent = new Intent(mContext, EmpCalendarActivity.class);
+                startActivity(intent);
+            }
+        });
+
         activeBt = findViewById(R.id.empNavActiveBt);
+        activeBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\nactive button clicked.\n");
+                Intent intent = new Intent(mContext, EmpActiveActivity.class);
+                startActivity(intent);
+            }
+        });
+
         pendingBt = findViewById(R.id.empNavPendingBt);
+        pendingBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\npending button clicked.\n");
+                Intent intent = new Intent(mContext, EmpPendingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         settingBt = findViewById(R.id.empNavSettingsBt);
+        settingBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\nsetting button clicked.\n");
+                Intent intent = new Intent(mContext, EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
         logoutBt = findViewById(R.id.buttonLogout);
         logoutBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,16 +99,55 @@ public class EmpNavDrawerActivity extends AppCompatActivity {
 
         // TEXT BUTTON
         homeText = findViewById(R.id.empNavHome);
-//        homeText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        homeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\nhome button clicked.\n");
+                Intent intent = new Intent(mContext, HomeEmployerActivity.class);
+                startActivity(intent);
+            }
+        });
+
         calendarText = findViewById(R.id.empNavCalendar);
+        calendarText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\ncalendar button clicked.\n");
+                Intent intent = new Intent(mContext, EmpCalendarActivity.class);
+                startActivity(intent);
+            }
+        });
+
         activeText = findViewById(R.id.empNavActiveJobs);
+        activeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\nactive button clicked.\n");
+                Intent intent = new Intent(mContext, EmpActiveActivity.class);
+                startActivity(intent);
+            }
+        });
+
         pendingText = findViewById(R.id.empNavPendingJobs);
+        pendingText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\npending button clicked.\n");
+                Intent intent = new Intent(mContext, EmpPendingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         settingText = findViewById(R.id.empNavSettings);
+        settingText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\nsetting button clicked.\n");
+                Intent intent = new Intent(mContext, EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -76,7 +161,12 @@ public class EmpNavDrawerActivity extends AppCompatActivity {
                     Log.d(TAG, "onAuthStateChanged: signed_in: " + user.getUid());
                 }else{
                     Log.d(TAG, "onAuthStateChanged: signed_out");
-                    Toast.makeText(mContext, "Signed out", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(mContext, "Signed Out", Toast.LENGTH_SHORT);
+                    View view = toast.getView();
+                    view.setBackgroundColor(Color.parseColor("#36454f"));
+                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+                    toastMessage.setTextColor(Color.parseColor("#0BDAD0"));
+                    toast.show();
                     Intent intent = new Intent(mContext, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

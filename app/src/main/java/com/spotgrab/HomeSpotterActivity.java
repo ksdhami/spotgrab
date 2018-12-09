@@ -3,14 +3,18 @@ package com.spotgrab;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +43,7 @@ public class HomeSpotterActivity extends AppCompatActivity {
     private String defaultProfileImageUrl = "https://firebasestorage.googleapis.com/v0/b/spotgrab-4f2cf.appspot.com/o/images%2Fprofile.png?alt=media&token=8fe8b4bf-1df0-4e82-bbce-35be6090a5c4";
 
     private Button notificationButton, activeButton, offerButton, postSchedButton, menuButton;
+    //private SwitchCompat beaconButton;
     private ImageView profileImage;
     private TextView userDisplayName, userNumJobs;
     private RatingBar userRating;
@@ -62,15 +67,55 @@ public class HomeSpotterActivity extends AppCompatActivity {
 
         mContext = HomeSpotterActivity.this;
 
+//        beaconButton = findViewById(R.id.beaconBt);
+//        beaconButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                boolean on = ((Switch) v).isChecked();
+//
+//                if (on) {
+//                    Log.d(TAG, "switch is on");
+//                } else {
+//                    Log.d(TAG, "switch is off");
+//                }
+//            }
+//        });
+
         notificationButton = findViewById(R.id.notificationSpotButton);
+        notificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\navailability clicked.\n");
+                Intent intent = new Intent(mContext, SpotSchedActivity.class);
+                startActivity(intent);
+            }
+        });
+
         activeButton = findViewById(R.id.activeSpotButton);
+        activeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\nactive clicked.\n");
+                Intent intent = new Intent(mContext, SpotActiveActivity.class);
+                startActivity(intent);
+            }
+        });
+
         offerButton = findViewById(R.id.offersSpotButton);
+        offerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "\noffer clicked.\n");
+                Intent intent = new Intent(mContext, SpotOffersActivity.class);
+                startActivity(intent);
+            }
+        });
 
         postSchedButton = findViewById(R.id.postSchedButton);
         postSchedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "\npost shift clicked.\n");
+                Log.d(TAG, "\npost schedule clicked.\n");
                 Intent intent = new Intent(mContext, SpotCalendarActivity.class);
                 startActivity(intent);
             }
@@ -123,7 +168,7 @@ public class HomeSpotterActivity extends AppCompatActivity {
                                 if(loggedInUser.getRating() == null) {
                                     userRating.setRating(0);
                                 } else {
-                                  userRating.setRating(loggedInUser.getRating().intValue());
+                                  userRating.setRating(loggedInUser.getRating().floatValue());
                                 }
 
                                 //Toast.makeText(mContext, user.getAccount(), Toast.LENGTH_SHORT).show();

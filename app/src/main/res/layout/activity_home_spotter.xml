@@ -85,6 +85,7 @@
                 android:isIndicator="true"/>
 
             <android.support.v7.widget.SwitchCompat
+                android:id="@+id/beaconBt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -93,7 +94,7 @@
                 android:checked="true" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/startTimeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
@@ -182,7 +183,7 @@
             android:backgroundTint="@color/whiteBackgroundColor"
             android:elevation="10dp"
             android:fontFamily="@font/roboto"
-            android:text="notification"
+            android:text="availability"
             android:textAllCaps="false"
             android:textSize="14sp"
             android:translationZ="10dp" />
