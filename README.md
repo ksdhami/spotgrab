@@ -1,41 +1,9 @@
 # SpotGrab
 
-One Paragraph of project description goes here
+Software Entrepreneurship course project.
 
-## Getting Started
+An Android application that acts as a liaison for employers to network with vetted and trained employees to fill in empty shifts. Think of a pool of low-skilled employees from franchises, who would like to pick up extra shift, and employers looking to fill shift and they either don't want to train new employees or do not have the time to fill the shift themselves. 
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
